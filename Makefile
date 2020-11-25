@@ -27,4 +27,4 @@ acte3: acte3.o $(OBJS)
 main: main.o arbresphylo.o arbres.o listes.o
 
 clean:
-	rm -f main *.o
+	rm -f main *.o arbre.dot arbre.png

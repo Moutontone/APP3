@@ -29,7 +29,8 @@ void init_liste_vide(liste_t* L);
  */
 int ajouter_tete(liste_t *L, string c);
 
+void ajouter_queue(liste_t *l, string str);
+
+void afficher_liste (liste_t* l);
 
 #endif /* _LISTES_H */
-
-
