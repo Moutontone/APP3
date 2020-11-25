@@ -31,6 +31,12 @@ arbre lire_arbre (FILE *f);
 /* Fonction d'affichage, à remplir */
 void affiche_arbre (arbre);
 
+void ecrire_fichier(arbre racine, char* nomfichier);
+
+void rec_fichier(FILE* f,arbre racine);
+
+int doublons(char* valeur);
+
 /* Renvoie 1 si l'arbre est une feuille */
 int est_une_feuille(arbre a);
 

@@ -95,7 +95,64 @@ arbre lire_arbre (FILE *f)
 
 void affiche_arbre (noeud *racine)
 {
-    /* à remplir */
+  char* nomFichier = "arbre.dot";
+  ecrire_fichier(racine, nomFichier);
+}
+
+void ecrire_fichier(arbre racine, char* nomfichier){
+    FILE* f = fopen(nomfichier, "w");
+    fprintf(f,"%s","digraph arbre { \n");
+    if(racine != NULL){
+        /*fprintf(f,"%s",racine->valeur);*/
+        rec_fichier( f, racine);
+    }
+    fprintf(f,"%s","}");
+
+}
+
+void rec_fichier(FILE* f,arbre racine){
+
+    if(racine != NULL){
+        int valeurR=doublons(racine->valeur);
+        if(racine->gauche != NULL){
+                int valeurG = doublons(racine->gauche->valeur);
+                // traiter le doublon
+                if(valeurR == 0 && valeurG == 0){
+
+                    fprintf(f,"\"%s\" -> \"%s\" [label = \"non\"] \n",racine->valeur, racine->gauche->valeur);
+                }else if(valeurR == 0 && valeurG == 1){
+                    fprintf(f,"\"%s\" -> %s [label = \"non\"] \n",racine->valeur, racine->gauche->valeur);
+                }    else if(valeurR == 1 && valeurG == 0){
+                    fprintf(f,"%s -> \"%s\"  [label = \"non\"] \n",racine->valeur, racine->gauche->valeur);
+                }    else{
+                    fprintf(f,"%s -> %s  [label = \"non\"] \n",racine->valeur, racine->gauche->valeur);
+                }
+        }
+        if(racine->droit != NULL){
+            int valeurD = doublons(racine->droit->valeur);
+            // traiter le doublon
+            if(valeurR == 0 && valeurD == 0){
+
+                fprintf(f,"\"%s\" -> \"%s\" [label = \"non\"] \n",racine->valeur, racine->droit->valeur);
+            }else if(valeurR == 0 && valeurD == 1){
+                fprintf(f,"\"%s\" -> %s [label = \"non\"] \n",racine->valeur, racine->droit->valeur);
+            }    else if(valeurR == 1 && valeurD == 0){
+                fprintf(f,"%s -> \"%s\"  [label = \"non\"] \n",racine->valeur, racine->droit->valeur);
+            }    else{
+                fprintf(f,"%s -> %s  [label = \"non\"] \n",racine->valeur, racine->droit->valeur);
+            }
+        }
+        rec_fichier(f, racine->gauche);
+        rec_fichier(f, racine->droit);
+    }
+}
+
+int doublons(char* valeur){
+    if(valeur[0]=='\"'){
+        return 1; // doublons
+    }else{
+        return 0;//non doublons
+    }
 }
 
 int est_une_feuille(arbre a) {
