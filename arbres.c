@@ -98,3 +98,7 @@ void affiche_arbre (noeud *racine)
     /* à remplir */
 }
 
+int est_une_feuille(arbre a) {
+  if (a == NULL) return -1;
+  return (a->droit == NULL && a->gauche == NULL);
+}

@@ -8,6 +8,16 @@
 
 void analyse_arbre (arbre racine, int* nb_esp, int* nb_carac)
 {
+  if (racine != NULL) {
+    if (est_une_feuille(racine)) {
+      *nb_esp += 1;
+    } else {
+      *nb_carac += 1;
+      analyse_arbre(racine->droit, nb_esp, nb_carac);
+      analyse_arbre(racine->gauche, nb_esp, nb_carac);
+    }
+  }
+
    printf ("À faire: fonction analyse_arbre fichier " __FILE__ "\n");
 }
 
@@ -28,11 +38,10 @@ int rechercher_espece (arbre racine, char *espece, liste_t* seq)
 
 
 
-/* Doit renvoyer 0 si l'espece a bien ete ajoutee, 1 sinon, et ecrire un 
+/* Doit renvoyer 0 si l'espece a bien ete ajoutee, 1 sinon, et ecrire un
  * message d'erreur.
  */
 int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
 
     return 1;
 }
-

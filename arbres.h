@@ -31,6 +31,8 @@ arbre lire_arbre (FILE *f);
 /* Fonction d'affichage, à remplir */
 void affiche_arbre (arbre);
 
+/* Renvoie 1 si l'arbre est une feuille */
+int est_une_feuille(arbre a);
 
 /* Macros pour de l'affichage uniquement si DEBUG est != 0 */
 extern int DEBUG;
