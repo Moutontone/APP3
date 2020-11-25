@@ -21,8 +21,8 @@ void analyse_arbre_rec (arbre racine, int* nb_esp, int* nb_carac) {
       *nb_esp += 1;
     } else {
       *nb_carac += 1;
-      analyse_arbre(racine->droit, nb_esp, nb_carac);
-      analyse_arbre(racine->gauche, nb_esp, nb_carac);
+      analyse_arbre_rec(racine->droit, nb_esp, nb_carac);
+      analyse_arbre_rec(racine->gauche, nb_esp, nb_carac);
     }
   }
 }
