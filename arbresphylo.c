@@ -8,6 +8,14 @@
 
 void analyse_arbre (arbre racine, int* nb_esp, int* nb_carac)
 {
+  *nb_esp = 0;
+  *nb_carac = 0;
+  analyse_arbre_rec(racine, nb_esp, nb_carac);
+
+   //printf ("À faire: fonction analyse_arbre fichier " __FILE__ "\n");
+}
+
+void analyse_arbre_rec (arbre racine, int* nb_esp, int* nb_carac) {
   if (racine != NULL) {
     if (est_une_feuille(racine)) {
       *nb_esp += 1;
@@ -17,11 +25,7 @@ void analyse_arbre (arbre racine, int* nb_esp, int* nb_carac)
       analyse_arbre(racine->gauche, nb_esp, nb_carac);
     }
   }
-
-   printf ("À faire: fonction analyse_arbre fichier " __FILE__ "\n");
 }
-
-
 
 
 

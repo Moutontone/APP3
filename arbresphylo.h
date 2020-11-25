@@ -4,12 +4,14 @@
 #include "listes.h"
 
 
-/* Analyse un arbre: doit mettre à jour le nombre d'espèces et de 
+/* Analyse un arbre: doit mettre à jour le nombre d'espèces et de
  * caractéristiques.
  */
 void analyse_arbre (arbre racine, int* nb_esp, int* nb_carac);
 
-/* Recherche une espèce dans l'arbre et remplit seq avec la séquence de ses 
+void analyse_arbre_rec (arbre racine, int* nb_esp, int* nb_carac);
+
+/* Recherche une espèce dans l'arbre et remplit seq avec la séquence de ses
  * caractéristiques.
  *
  * Doit retourner 0 si l'espèce a été retrouvée, 1 sinon.
