@@ -12,8 +12,12 @@ void init_liste_vide(liste_t* L) {
 
 
 int ajouter_tete(liste_t* L, string c) { /* retourne 0 si OK, 1 sinon  */
-    /* a completer */
-        return 1;
+  cellule_t *newCell;
+  newCell = (cellule_t*)malloc(sizeof(cellule_t));
+  newCell->val = c;
+  newCell->suivant = L->tete;
+  L->tete = newCell;
+  return 1;
 }
 
 void ajouter_queue(liste_t *l, string str) {
