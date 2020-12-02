@@ -82,6 +82,40 @@ int rechercher_espece_rec (arbre racine, char *espece, liste_t* seq)
  * message d'erreur.
  */
 int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
+  arbre N = *a;
+  if (est_une_feuille(N) == 0) {
+    //si N est un Noeud 2 cas :
+    if (seq == NULL || !strcmp(N->valeur,seq->val)) {
+      ajouter_espece(&N->gauche, espece, seq);
+    } else {
+      ajouter_espece(&N->droit, espece, seq->suivant);
+    }
+  } else {
+  //si N est une feuille ou Nil 4 cas :
+    if (N == NULL && seq == NULL) {
+      arbre newFeuille = nouveau_noeud();
+      newFeuille->valeur = espece;
+      N = newFeuille;
+      return 0;
+    }
+    if (N == NULL && seq != NULL) {
+      arbre newNoeud = nouveau_noeud();
+      newNoeud->valeur = seq->val;
+      N = newNoeud;
+      ajouter_espece(&N->droit, espece, seq->suivant);
+    }
+    if (N != NULL && seq == NULL) {
+      arbre newFeuille = nouveau_noeud();
+      newFeuille->valeur = N->valeur;
+      N->valeur = seq->val;
+      N->gauche = newFeuille;
+      ajouter_espece(&N->droit, espece, seq->suivant);
+    }
+    if (N != NULL && seq != NULL) {
+      printf("'%s' ne peut pas etre ajouté. l'espece '%s' partage les meme caractéristiques",espece,N->valeur);
+      return 1;
+    }
 
-    return 1;
+  }
+    return -1;
 }
