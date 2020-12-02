@@ -6,7 +6,7 @@
 
 /* fichier à compléter au besoin */
 void init_liste_vide(liste_t* L) {
-    L = (liste_t*)malloc(sizeof(liste_t));
+    //L = (liste_t*)malloc(sizeof(liste_t));
     L->tete = NULL;
 }
 

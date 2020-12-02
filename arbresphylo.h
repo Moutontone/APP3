@@ -16,7 +16,7 @@ void analyse_arbre_rec (arbre racine, int* nb_esp, int* nb_carac);
  *
  * Doit retourner 0 si l'espèce a été retrouvée, 1 sinon.
  */
-void rechercher_espece (arbre racine, char *espece);
+int rechercher_espece (arbre racine, char *espece, liste_t* seq);
 
 int rechercher_espece_rec (arbre racine, char *espece, liste_t* seq);
 

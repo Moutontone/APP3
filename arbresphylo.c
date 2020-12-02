@@ -35,17 +35,15 @@ void analyse_arbre_rec (arbre racine, int* nb_esp, int* nb_carac) {
  * caractéristiques. Retourne 0 si l'espèce a été retrouvée, 1 sinon.
  */
 
- void rechercher_espece (arbre racine, char *espece){
+ int rechercher_espece (arbre racine, char *espece, liste_t* seq) {
     int ret;
-    printf("ici ok \n");
-    liste_t *p = NULL;
-    init_liste_vide(p);
-    ret = rechercher_espece_rec (racine, espece, p);
+    ret = rechercher_espece_rec (racine, espece, seq);
     if (ret == 0) {
-      afficher_liste(p);
+      afficher_liste(seq);
     } else {
       printf("Espece '%s' non présente dans l'abre.\n",espece);
     }
+    return ret;
 }
 
 
@@ -53,8 +51,10 @@ void analyse_arbre_rec (arbre racine, int* nb_esp, int* nb_carac) {
 int rechercher_espece_rec (arbre racine, char *espece, liste_t* seq)
 {
     if (racine == NULL) return 1;
-     if (est_une_feuille(racine)) {
+    if (est_une_feuille(racine)) {
        if (racine->valeur == espece) {
+         printf("feuille %s <> %s\n",racine->valeur,espece);
+         printf("trouve !\n");
          return 0;
        } else {
          return 1;
@@ -63,7 +63,7 @@ int rechercher_espece_rec (arbre racine, char *espece, liste_t* seq)
      int isIsGauche;
      isIsGauche = rechercher_espece_rec(racine->gauche, espece, seq);
      if (isIsGauche == 0) {
-       return 1;
+       return 0;
      } else {
        ajouter_queue(seq, racine->valeur);
        return rechercher_espece_rec(racine->droit, espece, seq);

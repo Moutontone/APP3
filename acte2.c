@@ -83,7 +83,7 @@ int main(int argc, char** argv) {
 		liste_t seq;
 		init_liste_vide(&seq);
 		printf("Cherche %s dans l'arbre %s\n", nom_espece, nom_fichier);
-		if (rechercher_espece(a, nom_espece, &seq) == 0) 
+		if (rechercher_espece(a, nom_espece, &seq) == 0)
 			fprintf(stderr, "\033[0;31mERREUR\033[0m sur %s\n\t %s est absent de l'arbre %s mais rechercher_espece a renvoyé présent\n", fichier_test, nom_espece, nom_fichier);
 		return 0;
 	}
@@ -97,12 +97,12 @@ int main(int argc, char** argv) {
 			return 1;
 		}
 
-		expected_caracs = (char**) malloc(expected_nb_carac * sizeof(char*)); 
+		expected_caracs = (char**) malloc(expected_nb_carac * sizeof(char*));
 		if (getline(&line, &len, f) != -1) {
 			for (int i = 0; i < expected_nb_carac; i++){
 				if (i == 0)
 					token = strtok(line, " ");
-				else 
+				else
 					token = strtok(NULL, " ");
 				if (token == NULL) {
 					fprintf(stderr, "Reçu %d caracteristiques mais %d était demandé\n", i, expected_nb_carac);
