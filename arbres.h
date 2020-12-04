@@ -29,7 +29,7 @@ noeud* nouveau_noeud (void);
 arbre lire_arbre (FILE *f);
 
 /* Fonction d'affichage, à remplir */
-void affiche_arbre (arbre);
+void affiche_arbre (noeud* racine);
 
 void ecrire_fichier(arbre racine, char* nomfichier);
 

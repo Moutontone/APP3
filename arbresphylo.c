@@ -77,45 +77,78 @@ int rechercher_espece_rec (arbre racine, char *espece, liste_t* seq)
 }
 
 
+int retirer_in_liste (char* str, cellule_t* seq) {
+  if (seq == NULL) return 0;
+  cellule_t *cell, *prec;
+  prec = seq;
+  cell = prec->suivant;
+  if (strcmp(str,prec->val)==0) {
+    free(prec);
+    seq = cell;
+    return 1;
+  }
+  while (cell != NULL) {
+    if (strcmp(str,cell->val)==0) {
+      prec->suivant = cell->suivant;
+      free(cell);
+      return 1;
+    }
+  prec = cell;
+  cell = cell->suivant;
+  }
 
+
+  return 0;
+}
 /* Doit renvoyer 0 si l'espece a bien ete ajoutee, 1 sinon, et ecrire un
  * message d'erreur.
  */
 int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
   arbre N = *a;
+
+  liste_t l;
+  l.tete = seq;
+  afficher_liste(&l);
+
   if (est_une_feuille(N) == 0) {
     //si N est un Noeud 2 cas :
-    if (seq == NULL || !strcmp(N->valeur,seq->val)) {
-      ajouter_espece(&N->gauche, espece, seq);
+    printf("Noeud : %s. ",N->valeur);
+    if (retirer_in_liste(N->valeur, seq)) {
+      printf("présent\n");
+      ajouter_espece(&N->droit, espece, seq);
     } else {
-      ajouter_espece(&N->droit, espece, seq->suivant);
+      printf("absent\n");
+      ajouter_espece(&N->gauche, espece, seq);
     }
   } else {
   //si N est une feuille ou Nil 4 cas :
     if (N == NULL && seq == NULL) {
+      printf("emlacement trouvé !\n");
       arbre newFeuille = nouveau_noeud();
       newFeuille->valeur = espece;
       N = newFeuille;
       return 0;
     }
     if (N == NULL && seq != NULL) {
+      printf("nouvelles caractéristiques '%s'\n",seq->val);
       arbre newNoeud = nouveau_noeud();
       newNoeud->valeur = seq->val;
       N = newNoeud;
       ajouter_espece(&N->droit, espece, seq->suivant);
     }
-    if (N != NULL && seq == NULL) {
+    if (N != NULL && seq != NULL) {
+      printf("nouvelles caractéristiques '%s' + feuille deja la\n",seq->val);
       arbre newFeuille = nouveau_noeud();
       newFeuille->valeur = N->valeur;
       N->valeur = seq->val;
       N->gauche = newFeuille;
       ajouter_espece(&N->droit, espece, seq->suivant);
     }
-    if (N != NULL && seq != NULL) {
+    if (N != NULL && seq == NULL) {
       printf("'%s' ne peut pas etre ajouté. l'espece '%s' partage les meme caractéristiques",espece,N->valeur);
       return 1;
     }
 
   }
-    return -1;
+  return -1;
 }
