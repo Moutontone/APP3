@@ -105,7 +105,7 @@ int retirer_in_liste (char* str, cellule_t* seq) {
  */
 int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
   arbre N = *a;
-
+  printf("\nEtape suivante :\n Liste :\n");
   liste_t l;
   l.tete = seq;
   afficher_liste(&l);
@@ -121,6 +121,7 @@ int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
       ajouter_espece(&N->gauche, espece, seq);
     }
   } else {
+
   //si N est une feuille ou Nil 4 cas :
     if (N == NULL && seq == NULL) {
       printf("emlacement trouvé !\n");
@@ -137,6 +138,7 @@ int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
       ajouter_espece(&N->droit, espece, seq->suivant);
     }
     if (N != NULL && seq != NULL) {
+      printf("Feuille '%s'\n",N->valeur);
       printf("nouvelles caractéristiques '%s' + feuille deja la\n",seq->val);
       arbre newFeuille = nouveau_noeud();
       newFeuille->valeur = N->valeur;
@@ -145,6 +147,7 @@ int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
       ajouter_espece(&N->droit, espece, seq->suivant);
     }
     if (N != NULL && seq == NULL) {
+      printf("Feuille '%s'\n",N->valeur);
       printf("'%s' ne peut pas etre ajouté. l'espece '%s' partage les meme caractéristiques",espece,N->valeur);
       return 1;
     }
