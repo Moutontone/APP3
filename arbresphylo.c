@@ -115,10 +115,10 @@ int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
     printf("Noeud : %s. ",N->valeur);
     if (retirer_in_liste(N->valeur, seq)) {
       printf("présent\n");
-      ajouter_espece(&N->droit, espece, seq);
+      return ajouter_espece(&N->droit, espece, seq);
     } else {
       printf("absent\n");
-      ajouter_espece(&N->gauche, espece, seq);
+      return ajouter_espece(&N->gauche, espece, seq);
     }
   } else {
 
@@ -130,13 +130,14 @@ int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
       newFeuille->valeur = espece;
       N = newFeuille;
       return 0;
+
     }
     if (N == NULL && seq != NULL) {
       printf("nouvelles caractéristiques '%s'\n",seq->val);
       arbre newNoeud = nouveau_noeud();
       newNoeud->valeur = seq->val;
       N = newNoeud;
-      ajouter_espece(&N->droit, espece, seq->suivant);
+      return ajouter_espece(&N->droit, espece, seq->suivant);
     }
     if (N != NULL && seq != NULL) {
       printf("Feuille '%s'\n",N->valeur);
@@ -145,7 +146,7 @@ int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
       newFeuille->valeur = N->valeur;
       N->valeur = seq->val;
       N->gauche = newFeuille;
-      ajouter_espece(&N->droit, espece, seq->suivant);
+      return ajouter_espece(&N->droit, espece, seq->suivant);
     }
     if (N != NULL && seq == NULL) {
       printf("Feuille '%s'\n",N->valeur);
