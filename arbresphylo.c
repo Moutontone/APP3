@@ -125,6 +125,7 @@ int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
   //si N est une feuille ou Nil 4 cas :
     if (N == NULL && seq == NULL) {
       printf("emlacement trouvé !\n");
+      printf("pour l'espece '%s'\n",espece);
       arbre newFeuille = nouveau_noeud();
       newFeuille->valeur = espece;
       N = newFeuille;
