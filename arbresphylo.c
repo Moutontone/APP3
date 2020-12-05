@@ -137,6 +137,7 @@ int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
       arbre newNoeud = nouveau_noeud();
       newNoeud->valeur = seq->val;
       N = newNoeud;
+      printf("Feuille '%s'\n",N->valeur);
       return ajouter_espece(&N->droit, espece, seq->suivant);
     }
     if (N != NULL && seq != NULL) {
@@ -146,6 +147,8 @@ int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
       newFeuille->valeur = N->valeur;
       N->valeur = seq->val;
       N->gauche = newFeuille;
+      printf("Feuille '%s'\n",N->valeur);
+      printf("Feuille '%s'\n",N->gauche->valeur);
       return ajouter_espece(&N->droit, espece, seq->suivant);
     }
     if (N != NULL && seq == NULL) {
