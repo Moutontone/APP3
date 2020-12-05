@@ -133,13 +133,13 @@ void rec_fichier(FILE* f,arbre racine){
             // traiter le doublon
             if(valeurR == 0 && valeurD == 0){
 
-                fprintf(f,"\"%s\" -> \"%s\" [label = \"non\"] \n",racine->valeur, racine->droit->valeur);
+                fprintf(f,"\"%s\" -> \"%s\" [label = \"oui\"] \n",racine->valeur, racine->droit->valeur);
             }else if(valeurR == 0 && valeurD == 1){
-                fprintf(f,"\"%s\" -> %s [label = \"non\"] \n",racine->valeur, racine->droit->valeur);
+                fprintf(f,"\"%s\" -> %s [label = \"oui\"] \n",racine->valeur, racine->droit->valeur);
             }    else if(valeurR == 1 && valeurD == 0){
-                fprintf(f,"%s -> \"%s\"  [label = \"non\"] \n",racine->valeur, racine->droit->valeur);
+                fprintf(f,"%s -> \"%s\"  [label = \"oui\"] \n",racine->valeur, racine->droit->valeur);
             }    else{
-                fprintf(f,"%s -> %s  [label = \"non\"] \n",racine->valeur, racine->droit->valeur);
+                fprintf(f,"%s -> %s  [label = \"oui\"] \n",racine->valeur, racine->droit->valeur);
             }
         }
         rec_fichier(f, racine->gauche);
