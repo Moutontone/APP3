@@ -110,7 +110,7 @@ int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
   printf("Liste : \n");
   afficher_liste(&l);
 
-  if (est_une_feuille(*a) == 0) {
+  if (*a != NULL && est_une_feuille(*a) == 0) {
     //si N est un Noeud 2 cas :
     printf("Noeud : %s. ",(*a)->valeur);
     // if (retirer_in_liste((*a)->valeur, seq)) {
@@ -121,44 +121,42 @@ int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
       printf("absent\n");
       return ajouter_espece(&(*a)->gauche, espece, seq);
     }
-  } else {
+  }
 
 
   //si N est une feuille ou Nil 4 cas :
-    if (*a == NULL && seq == NULL) {
-      printf("emlacement trouvé !\n");
-      printf("pour l'espece '%s'\n",espece);
-      arbre newFeuille = nouveau_noeud();
-      newFeuille->valeur = espece;
-      *a = newFeuille;
-      return 0;
+  if (*a == NULL && seq == NULL) {
+    printf("emlacement trouvé !\n");
+    printf("pour l'espece '%s'\n",espece);
+    arbre newFeuille = nouveau_noeud();
+    newFeuille->valeur = espece;
+    *a = newFeuille;
+    return 0;
 
-    }
-    if (*a == NULL && seq != NULL) {
-      printf("nouvelles caractéristiques '%s'\n",seq->val);
-      arbre newNoeud = nouveau_noeud();
-      newNoeud->valeur = seq->val;
-      *a = newNoeud;
-      printf("Feuille '%s'\n",(*a)->valeur);
-      return ajouter_espece(&(*a)->droit, espece, seq->suivant);
-    }
-    if (*a != NULL && seq != NULL) {
-      printf("Feuille '%s'\n",(*a)->valeur);
-      printf("nouvelles caractéristiques '%s' + feuille deja la\n",seq->val);
-      arbre newFeuille = nouveau_noeud();
-      newFeuille->valeur = (*a)->valeur;
-      (*a)->valeur = seq->val;
-      (*a)->gauche = newFeuille;
-      printf("Feuille '%s'\n",(*a)->valeur);
-      printf("Feuille '%s'\n",(*a)->gauche->valeur);
-      return ajouter_espece(&(*a)->droit, espece, seq->suivant);
-    }
-    if (*a != NULL && seq == NULL) {
-      printf("Feuille '%s'\n",(*a)->valeur);
-      printf("'%s' ne peut pas etre ajouté. l'espece '%s' partage les meme caractéristiques",espece,(*a)->valeur);
-      return 1;
-    }
-
+  }
+  if (*a == NULL && seq != NULL) {
+    printf("nouvelles caractéristiques '%s'\n",seq->val);
+    arbre newNoeud = nouveau_noeud();
+    newNoeud->valeur = seq->val;
+    *a = newNoeud;
+    printf("Feuille '%s'\n",(*a)->valeur);
+    return ajouter_espece(&(*a)->droit, espece, seq->suivant);
+  }
+  if (*a != NULL && seq != NULL) {
+    printf("Feuille '%s'\n",(*a)->valeur);
+    printf("nouvelles caractéristiques '%s' + feuille deja la\n",seq->val);
+    arbre newFeuille = nouveau_noeud();
+    newFeuille->valeur = (*a)->valeur;
+    (*a)->valeur = seq->val;
+    (*a)->gauche = newFeuille;
+    printf("Feuille '%s'\n",(*a)->valeur);
+    printf("Feuille '%s'\n",(*a)->gauche->valeur);
+    return ajouter_espece(&(*a)->droit, espece, seq->suivant);
+  }
+  if (*a != NULL && seq == NULL) {
+    printf("Feuille '%s'\n",(*a)->valeur);
+    printf("'%s' ne peut pas etre ajouté. l'espece '%s' partage les meme caractéristiques",espece,(*a)->valeur);
+    return 1;
   }
   return -1;
 }
