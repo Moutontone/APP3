@@ -1,16 +1,13 @@
 tests/amphibians.test
 licorne
-5
-ecailles corne tirebouchon car_4 car_12 
+3
+car_3 car_41 venin 
 possible
 2873
-2876
+2872
 2873
 Ichthyophis_tricolor
 0
-licorne
-5
-ecailles corne tirebouchon car_4 car_12 
 Ichthyophis_bannanicus
 1
 car_6 
@@ -128,6 +125,9 @@ car_3
 Rhinatrema_bivittatum
 2
 car_3 car_41 
+licorne
+3
+car_3 car_41 venin 
 Epicrionops_niger
 3
 car_3 car_41 car_42 

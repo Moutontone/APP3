@@ -1,16 +1,13 @@
 tests/primates.test
 sphinx
-2
-ecailles car_3 
+6
+car_4 car_9 ecailles corne ailes tirebouchon 
 possible
 11
-11
+13
 11
 Pongo_abelii
 0
-sphinx
-2
-ecailles car_3 
 Homo_sapiens
 1
 car_6 
@@ -29,6 +26,9 @@ car_4
 Macaca_mulatta
 2
 car_4 car_9 
+sphinx
+6
+car_4 car_9 ecailles corne ailes tirebouchon 
 Callithrix_jacchus
 1
 car_3 

@@ -1,22 +1,22 @@
 tests/mammalia.test
 dragon
-2
-ailes car_2 
+5
+car_1 ecailles corne venin tirebouchon 
 possible
 15
-15
+17
 15
 Squamata
 0
-dragon
-2
-ailes car_2 
 Gallus_gallus
 1
 car_2 
 Ornithorhynchus_anatinus
 1
 car_1 
+dragon
+5
+car_1 ecailles corne venin tirebouchon 
 Tachyglossus_aculeatus
 2
 car_1 car_4 

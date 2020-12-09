@@ -7,11 +7,9 @@
 #include "arbresphylo.h"
 #include "common_tests.h"
 
-typedef struct espece_caracs {char* espece; int nb_caracs; char** caracs;} espece_caracs_t;
-
 int main(int argc, char** argv) {
 	if (argc != 2) {
-		printf("Usage : acte1 <nom fichier test>\n");
+		printf("Usage : %s <nom fichier test>\n", argv[0]);
 		return 1;
 	}
 	char* fichier_test = argv[1];
@@ -75,14 +73,14 @@ int main(int argc, char** argv) {
 	}
 
 	// caractéristiques à ajouter
-	caracs = (char**) malloc(nb_carac_a_inserer * sizeof(char*));
+	caracs = (char**) malloc(nb_carac_a_inserer * sizeof(char*)); 
 	// On ne lit pas cette ligne si il n'y a pas de caracteristiques a inserer
 	if (nb_carac_a_inserer > 0) {
 		if (getline(&line, &len, f) != -1) {
 			for (int i = 0; i < nb_carac_a_inserer; i++){
 				if (i == 0)
 					token = strtok(line, " ");
-				else
+				else 
 					token = strtok(NULL, " ");
 				if (token == NULL) {
 					fprintf(stderr, "Reçu %d caracteristiques mais %d était demandé\n",
@@ -129,7 +127,7 @@ int main(int argc, char** argv) {
 		fprintf(stderr, "Erreur : %s mauvais format de fichier test\n", fichier_test);
 		return 1;
 	}
-
+	
 	// Nombre noeuds
 	if (getline(&line, &len, f) != -1) {
 		token = strtok(line, " ");
@@ -153,7 +151,7 @@ int main(int argc, char** argv) {
 	//
 
 	espece_caracs_t* especes_caracs =
-		(espece_caracs_t*) malloc(nb_especes_a_tester * sizeof(espece_caracs_t));
+		(espece_caracs_t*) malloc(nb_especes_a_tester * sizeof(espece_caracs_t)); 
 	for (int i = 0; i < nb_especes_a_tester; i++) {
 		// Premiere ligne, nom de l'animal
 		if (getline(&line, &len, f) == -1) {
@@ -184,7 +182,7 @@ int main(int argc, char** argv) {
 		for (int i = 0; i < nb_caracs; i++) {
 			if (i == 0)
 				token = strtok(line, " ");
-			else
+			else 
 				token = strtok(NULL, " ");
 			if (token == NULL) {
 				fprintf(stderr, "Reçu %d caracteristiques mais %d était demandé\n",
@@ -208,8 +206,7 @@ int main(int argc, char** argv) {
 	}
 
 	printf("Ajoute %s dans l'arbre %s\n", nom_espece, nom_fichier);
-				int rep = ajouter_espece(&a, nom_espece, seq.tete) != 0;
-				affiche_arbre (a);
+        int rep = ajouter_espece(&a, nom_espece, seq.tete) != 0;
         if (rep != 0) {
 		if (!possible) {
 			printf("Impossible d'insérer %s dans %s comme prévu : \033[0;32mOK\033[0m\n",
@@ -223,7 +220,7 @@ int main(int argc, char** argv) {
 	}
 
 	// Verifier l'arbre
-	if (test_nb_esp_caracs(a, nom_fichier, nb_especes, nb_carac) != 0) {
+	if (test_nb_esp_caracs(a, nom_fichier, nb_especes, nb_carac) != 0) { 
 		fprintf(stderr, "\033[0;31mERREUR\033[0m sur %s\n",
 				fichier_test);
 		return 1;

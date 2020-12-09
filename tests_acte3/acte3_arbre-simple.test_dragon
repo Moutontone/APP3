@@ -1,22 +1,22 @@
 tests/arbre-simple.test
 dragon
-4
-ecailles corne venin ailes 
+6
+vertebres machoires ecailles venin ailes tirebouchon 
 possible
 8
 10
 8
 limace
 0
-dragon
-4
-ecailles corne venin ailes 
 lamproie
 1
 vertebres 
 carpe
 2
 vertebres machoires 
+dragon
+6
+vertebres machoires ecailles venin ailes tirebouchon 
 grenouille
 3
 vertebres machoires doigts 

@@ -1,16 +1,13 @@
 tests/mammalia.test
 sphinx
-6
-ecailles corne ailes tirebouchon car_1 car_4 
-possible
-15
-19
-15
+1
+car_2 
+impossible
+14
+13
+14
 Squamata
 0
-sphinx
-6
-ecailles corne ailes tirebouchon car_1 car_4 
 Gallus_gallus
 1
 car_2 

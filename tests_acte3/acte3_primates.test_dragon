@@ -1,16 +1,13 @@
 tests/primates.test
 dragon
-4
-ecailles ailes tirebouchon car_2 
+5
+car_3 ecailles venin ailes tirebouchon 
 possible
 11
 13
 11
 Pongo_abelii
 0
-dragon
-4
-ecailles ailes tirebouchon car_2 
 Homo_sapiens
 1
 car_6 
@@ -32,6 +29,9 @@ car_4 car_9
 Callithrix_jacchus
 1
 car_3 
+dragon
+5
+car_3 ecailles venin ailes tirebouchon 
 Otolemur_garnettii
 1
 car_2 

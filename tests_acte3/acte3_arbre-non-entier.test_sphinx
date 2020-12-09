@@ -1,14 +1,11 @@
 tests/arbre-non-entier.test
 sphinx
-5
-ecailles corne venin tirebouchon vertebres 
+9
+vertebres machoires doigts amnios placenta cornes ecailles corne ailes 
 possible
 9
-13
+11
 9
-sphinx
-5
-ecailles corne venin tirebouchon vertebres 
 lamproie
 1
 vertebres 
@@ -33,3 +30,6 @@ vertebres machoires doigts amnios placenta canines
 vache
 6
 vertebres machoires doigts amnios placenta cornes 
+sphinx
+9
+vertebres machoires doigts amnios placenta cornes ecailles corne ailes 

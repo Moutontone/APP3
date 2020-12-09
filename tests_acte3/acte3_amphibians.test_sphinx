@@ -1,16 +1,13 @@
 tests/amphibians.test
 sphinx
-6
-tirebouchon car_2 car_43 car_2437 car_2487 car_2489 
+4
+car_3 ecailles ailes tirebouchon 
 possible
 2873
-2877
+2874
 2873
 Ichthyophis_tricolor
 0
-sphinx
-6
-tirebouchon car_2 car_43 car_2437 car_2487 car_2489 
 Ichthyophis_bannanicus
 1
 car_6 
@@ -125,6 +122,9 @@ car_4 car_11 car_39
 Epicrionops_marmoratus
 1
 car_3 
+sphinx
+4
+car_3 ecailles ailes tirebouchon 
 Rhinatrema_bivittatum
 2
 car_3 car_41 

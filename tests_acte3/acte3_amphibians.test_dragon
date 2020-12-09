@@ -1,16 +1,13 @@
 tests/amphibians.test
 dragon
-4
-ecailles corne tirebouchon car_1 
+3
+car_1 ecailles ailes 
 possible
 2873
-2875
+2873
 2873
 Ichthyophis_tricolor
 0
-dragon
-4
-ecailles corne tirebouchon car_1 
 Ichthyophis_bannanicus
 1
 car_6 
@@ -8624,3 +8621,6 @@ car_2 car_43 car_2437 car_2486 car_2490 car_2582 car_2867 car_2868 car_2869
 Homo_sapiens
 1
 car_1 
+dragon
+3
+car_1 ecailles ailes 
