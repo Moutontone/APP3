@@ -104,23 +104,25 @@ int retirer_in_liste (char* str, cellule_t* seq) {
  * message d'erreur.
  */
 int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
-  // arbre N = *a;
-  printf("\nEtape suivante :\n Liste :\n");
+  printf("\nEtape suivante :\n");
   liste_t l;
   l.tete = seq;
+  printf("Liste : \n");
   afficher_liste(&l);
 
   if (est_une_feuille(*a) == 0) {
     //si N est un Noeud 2 cas :
     printf("Noeud : %s. ",(*a)->valeur);
-    if (retirer_in_liste((*a)->valeur, seq)) {
+    // if (retirer_in_liste((*a)->valeur, seq)) {
+    if (strcmp((*a)->valeur,seq->val)==0) {
       printf("présent\n");
-      return ajouter_espece(&(*a)->droit, espece, seq);
+      return ajouter_espece(&(*a)->droit, espece, seq->suivant);
     } else {
       printf("absent\n");
       return ajouter_espece(&(*a)->gauche, espece, seq);
     }
   } else {
+
 
   //si N est une feuille ou Nil 4 cas :
     if (*a == NULL && seq == NULL) {
