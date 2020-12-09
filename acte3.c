@@ -208,7 +208,6 @@ int main(int argc, char** argv) {
 	}
 
 	printf("Ajoute %s dans l'arbre %s\n", nom_espece, nom_fichier);
-	affiche_arbre(a);
         int rep = ajouter_espece(&a, nom_espece, seq.tete) != 0;
         if (rep != 0) {
 		if (!possible) {
