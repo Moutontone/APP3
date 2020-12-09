@@ -110,11 +110,11 @@ int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
   printf("Liste : \n");
   afficher_liste(&l);
 
-  if (*a != NULL && est_une_feuille(*a) == 0) {
+  if (est_une_feuille(*a) == 0) {
     //si N est un Noeud 2 cas :
     printf("Noeud : %s. ",(*a)->valeur);
     // if (retirer_in_liste((*a)->valeur, seq)) {
-    if (strcmp((*a)->valeur,seq->val)==0) {
+    if (seq != NULL && strcmp((*a)->valeur,seq->val)==0) {
       printf("présent\n");
       return ajouter_espece(&(*a)->droit, espece, seq->suivant);
     } else {
