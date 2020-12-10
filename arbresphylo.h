@@ -2,7 +2,7 @@
 #define ARBRESPHYLO_H
 
 #include "listes.h"
-
+#include "file.h"
 
 /* Analyse un arbre: doit mettre à jour le nombre d'espèces et de
  * caractéristiques.
@@ -27,5 +27,7 @@ int ajouter_espece (arbre* a, char *espece, cellule_t* seq);
 void afficher_par_niveau (arbre racine, FILE* fout) ;
 
 int ajouter_carac(arbre* a, char* carac, cellule_t* seq);
+
+void afficher_par_niveau_rec(file F1, file F2, FILE* fout);
 
 #endif

@@ -5,6 +5,7 @@
 #include "arbres.h"
 #include "arbresphylo.h"
 #include "listes.h"
+#include "file.h"
 
 void analyse_arbre (arbre racine, int* nb_esp, int* nb_carac)
 {
@@ -166,7 +167,35 @@ int ajouter_espece (arbre* a, char *espece, cellule_t* seq) {
  * Appeler la fonction avec fout=stdin pour afficher sur la sortie standard.
  */
 void afficher_par_niveau (arbre racine, FILE* fout) {
-   printf ("<<<<< À faire: fonction afficher_par_niveau fichier " __FILE__ "\n >>>>>");
+  file *F1 = nouvelleFile();
+  file *F2 = nouvelleFile();
+  enfiler(F1, racine);
+
+  afficher_par_niveau_rec(*F1, *F2, fout);
+}
+
+void afficher_par_niveau_rec(file F1, file F2, FILE* fout) {
+
+  arbre tree;
+  char texte[100000];
+  texte[0] = '\0';
+  while (file_vide(F1) == 0) {
+    tree = defiler(&F1);
+    // printf("noeud de valeur : ");
+    // printf("'%s'\n",tree->valeur );
+    if (tree != NULL && est_une_feuille(tree) == 0) {
+      // printf("feuille\n");
+      strcat(texte,tree->valeur);
+      strcat(texte, " ");
+      enfiler(&F2,tree->gauche);
+      enfiler(&F2, tree->droit);
+    }
+  }
+  // printf("%s",texte);
+  fprintf(fout,"%s\n",texte);
+  if (file_vide(F2) == 0) {
+    afficher_par_niveau_rec(F2,F1,fout);
+  }
 }
 
 // Acte 4
