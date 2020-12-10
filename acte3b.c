@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-
 #include "arbres.h"
 #include "arbresphylo.h"
 #include "common_tests.h"
@@ -61,7 +60,7 @@ int main(int argc, char** argv) {
 		end[1] = '\0';
 		buf1[strlen(buf1)-1] = '\0';
 		if(strcmp(buf1, buf2) != 0) {
-			fprintf(stderr, "\033[0;31mERREUR\033[0m sur %s, ligne: %d \nAttendu : %s \nTrouvé :  %s \n", 
+			fprintf(stderr, "\033[0;31mERREUR\033[0m sur %s, ligne: %d \nAttendu : %s \nTrouvé :  %s \n",
 					fichier_test, prof, buf1, buf2);
 			return 1;
 		}
