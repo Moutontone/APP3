@@ -1,3 +1,15 @@
+BRAY Amandine & GRENIER Armand
+
+table de correspondence :
+1 ligne par espece au format:
+
+espece_1;O;O;X;X;O
+
+(doit avoir X ou O pour chaque caractéristiques de l'arbre final)
+et on traduit par :
+espece_1 a pour caractéristiques : [car_1, car_2, car_5]
+
+
 Travail à effectuer:
 ====================
 
@@ -16,7 +28,7 @@ Nous vous fournissons des suites de tests pour les actes I, II et III-A.
 La façon de tester dépend du langage de programmation utilisé.
 
 Des tests pour les actes III-B et IV vous seront fournis ultérieurement.
-Par contre, vous êtes responsables de tester et fournir vous même quelques 
+Par contre, vous êtes responsables de tester et fournir vous même quelques
 tests pour l'acte V pour le rendu.
 
 
@@ -24,7 +36,7 @@ Tester votre implémentation en C:
 =================================
 
 Vous trouverez dans le répertoire tests/ des fichiers vous permettant de
-tester par vous-même vos fonctions en exécutant votre programme principal, par 
+tester par vous-même vos fonctions en exécutant votre programme principal, par
 exemple ainsi :
 
 > ./main tests/arbre-simple.test
@@ -57,7 +69,7 @@ Tester votre implémentation en Python:
 ======================================
 
 Vous trouverez dans le répertoire tests/ des fichiers vous permettant de
-tester par vous-même vos fonctions en exécutant votre programme principal, par 
+tester par vous-même vos fonctions en exécutant votre programme principal, par
 exemple ainsi :
 
 > ./main.py tests/arbre-simple.test
@@ -125,4 +137,3 @@ Nombre de caractéristiques de l'espèce à ajouter
  Nom espèce
  Nombre caractéristiques de l'espèce
  Liste caractéristiques (sur une seule ligne, séparées par un seul espace)
-
