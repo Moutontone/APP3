@@ -10,6 +10,36 @@ et on traduit par :
 espece_1 a pour caractéristiques : [car_1, car_2, car_5]
 
 
+
+algo :
+liste : de strcut espece
+on la parcourt :
+arbre vide:
+espece_1 : on forme l'arbre avec les car que possede espece_1 puis l'espece_1 au bout
+
+espece_i :
+  si espece_i n'a pas de car non présente dans l'abre:
+    fct ajouter
+  sinon
+    pour chaque nex car fct ajouter_car
+
+pour créer la liste on lit les tableau d'espece :
+
+
+strcute espece {
+  char * nom;
+  int tab[MAX];
+}
+tab[i] = 0 <=> l'espece ne possede pas car_i
+tab[i] = 1 <=> l'espece possede car_i
+
+
+================================================================================
+
+================================================================================
+
+
+
 Travail à effectuer:
 ====================
 
