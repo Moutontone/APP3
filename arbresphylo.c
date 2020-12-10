@@ -203,6 +203,7 @@ arbre *clade(arbre *a, cellule_t* seq, int *cladeComplet){
     arbre *g, *d;
     g = clade(&(*a)->gauche,seq,cladeComplet);
     d = clade(&(*a)->droit, seq, cladeComplet);
+    //Cas avec un seul fils :
     if ((*a)->gauche == NULL) {
       if (*cladeComplet==0) return (d==NULL)? d: a;
       return d;
@@ -211,18 +212,22 @@ arbre *clade(arbre *a, cellule_t* seq, int *cladeComplet){
       if (*cladeComplet==0) return (g==NULL)? g: a;
       return g ;
     }
+    // cas ou les deux fils ont pour feuille des especes de seq:
     if (g!=NULL && d!=NULL && *cladeComplet==0) return a;
     if (g!=NULL && d!=NULL && *cladeComplet==1) return NULL;
+    // si aucun des fils ne présente une clade valide
     if (g==NULL && d==NULL) return NULL;
+    //Le on ne peut plus rien ajouter au clade sans incoérences
     if (g==NULL||d==NULL) {
       *cladeComplet = 1;
-      printf("%s\n",(*a)->valeur);
-      printf("bool : %d\n",d==NULL);
+      // printf("%s\n",(*a)->valeur);
+      // printf("bool : %d\n",d==NULL);
     }
     return (g==NULL)? d : g ;
   }
+  //*a est une feuille ou Nil :
   if (*a == NULL) return a;
-  printf("feuille ; '%s' =>  %s\n",(*a)->valeur,(in_liste((*a)->valeur, seq))? "dans la liste ": "absent"  );
+  // printf("feuille ; '%s' =>  %s\n",(*a)->valeur,(in_liste((*a)->valeur, seq))? "dans la liste ": "absent"  );
   return (in_liste((*a)->valeur, seq))? a : NULL ;
 }
 
