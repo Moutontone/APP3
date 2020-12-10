@@ -204,14 +204,16 @@ arbre *clade(arbre *a, cellule_t* seq, int *cladeComplet){
     g = clade(&(*a)->gauche,seq,cladeComplet);
     d = clade(&(*a)->droit, seq, cladeComplet);
     if ((*a)->gauche == NULL) {
-      return (d==NULL)? d: a;
+      if (*cladeComplet==0) return (d==NULL)? d: a;
+      return d;
     }
     if ((*a)->droit == NULL) {
-      return (g==NULL)? g: a;
+      if (*cladeComplet==0) return (g==NULL)? g: a;
+      return g ;
     }
     if (g!=NULL && d!=NULL && *cladeComplet==0) return a;
     if (g!=NULL && d!=NULL && *cladeComplet==1) return NULL;
-    // if (g==NULL && d==NULL) return NULL;
+    if (g==NULL && d==NULL) return NULL;
     if (g==NULL||d==NULL) {
       *cladeComplet = 1;
       printf("%s\n",(*a)->valeur);
@@ -220,6 +222,7 @@ arbre *clade(arbre *a, cellule_t* seq, int *cladeComplet){
     return (g==NULL)? d : g ;
   }
   if (*a == NULL) return a;
+  printf("feuille ; '%s' =>  %s\n",(*a)->valeur,(in_liste((*a)->valeur, seq))? "dans la liste ": "absent"  );
   return (in_liste((*a)->valeur, seq))? a : NULL ;
 }
 
@@ -227,6 +230,7 @@ arbre *clade(arbre *a, cellule_t* seq, int *cladeComplet){
 int ajouter_carac(arbre* a, char* carac, cellule_t* seq) {
    arbre *emplacement;
    int cladeComplet = 0;
+   if (*a == NULL) return 0;
    emplacement = clade(a, seq, &cladeComplet);
    if (emplacement != NULL) {
      arbre new = nouveau_noeud();
