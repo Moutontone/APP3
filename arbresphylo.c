@@ -78,29 +78,7 @@ int rechercher_espece_rec (arbre racine, char *espece, liste_t* seq)
 }
 
 
-int retirer_in_liste (char* str, cellule_t* seq) {
-  if (seq == NULL) return 0;
-  cellule_t *cell, *prec;
-  prec = seq;
-  cell = prec->suivant;
-  if (strcmp(str,prec->val)==0) {
-    free(prec);
-    seq = cell;
-    return 1;
-  }
-  while (cell != NULL) {
-    if (strcmp(str,cell->val)==0) {
-      prec->suivant = cell->suivant;
-      free(cell);
-      return 1;
-    }
-  prec = cell;
-  cell = cell->suivant;
-  }
 
-
-  return 0;
-}
 /* Doit renvoyer 0 si l'espece a bien ete ajoutee, 1 sinon, et ecrire un
  * message d'erreur.
  */
@@ -200,8 +178,62 @@ void afficher_par_niveau_rec(file F1, file F2, FILE* fout) {
 
 // Acte 4
 
+int in_liste (char* str, cellule_t* seq) {
+  if (seq == NULL) return 0;
+  cellule_t *cell, *prec;
+  prec = seq;
+  cell = prec->suivant;
+  if (strcmp(str,prec->val)==0) {
+    return 1;
+  }
+  while (cell != NULL) {
+    if (strcmp(str,cell->val)==0) {
+      return 1;
+    }
+  prec = cell;
+  cell = cell->suivant;
+  }
+  return 0;
+}
+
+arbre *clade(arbre *a, cellule_t* seq, int *cladeComplet){
+  //CladeComplet vaut 0 au premier appel
+  //*a est un Noeud :
+  if (est_une_feuille(*a)==0) {
+    arbre *g, *d;
+    g = clade(&(*a)->gauche,seq,cladeComplet);
+    d = clade(&(*a)->droit, seq, cladeComplet);
+    if ((*a)->gauche == NULL) {
+      return (d==NULL)? d: a;
+    }
+    if ((*a)->droit == NULL) {
+      return (g==NULL)? g: a;
+    }
+    if (g!=NULL && d!=NULL && *cladeComplet==0) return a;
+    if (g!=NULL && d!=NULL && *cladeComplet==1) return NULL;
+    // if (g==NULL && d==NULL) return NULL;
+    if (g==NULL||d==NULL) {
+      *cladeComplet = 1;
+      printf("%s\n",(*a)->valeur);
+      printf("bool : %d\n",d==NULL);
+    }
+    return (g==NULL)? d : g ;
+  }
+  if (*a == NULL) return a;
+  return (in_liste((*a)->valeur, seq))? a : NULL ;
+}
+
 
 int ajouter_carac(arbre* a, char* carac, cellule_t* seq) {
-   printf ("<<<<< À faire: fonction ajouter_carac fichier " __FILE__ "\n >>>>>");
+   arbre *emplacement;
+   int cladeComplet = 0;
+   emplacement = clade(a, seq, &cladeComplet);
+   if (emplacement != NULL) {
+     arbre new = nouveau_noeud();
+     new->valeur = carac;
+     new->droit = (*emplacement);
+     *emplacement = new;
+     return 1;
+   }
    return 0;
 }
