@@ -13,8 +13,8 @@ struct ligne {
   int tab[MAX];
 }
 
-arbre_vide();
-parcours()
+int arbre_vide(arbre *a);
+int ajouterEspece(File *f, );
 
 
 
