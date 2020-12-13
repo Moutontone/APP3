@@ -53,10 +53,14 @@ int main(int argc, char* argv[])
 
     int nombre_especes; /* Ne pas initialiser ici, c'est analyse_arbre */
     int nombre_caract;  /* qui doit s'en charger */
-
     affiche_arbre (mon_arbre);
 
     analyse_arbre (mon_arbre, &nombre_especes, &nombre_caract);
+
+    // rechercher_espece(mon_arbre, "AppoLab", &sequence);
+    FILE *pouet = fopen("arbre.dot","w");
+    afficher_par_niveau(mon_arbre,pouet);
+    fclose(pouet);
 
     printf ("Nombre d'especes de l'arbre: %d\n", nombre_especes);
     printf ("Nombre de caractéristiques de l'arbre: %d\n", nombre_caract);
@@ -65,5 +69,3 @@ int main(int argc, char* argv[])
 
     return 0;
 }
-
-

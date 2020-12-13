@@ -50,7 +50,7 @@ void analyse_arbre_rec (arbre racine, int* nb_esp, int* nb_carac) {
     // printf("Liste apres {\n");
     // afficher_liste(seq);
     // printf("}\n");
-    printf("ret : %d",ret);
+    // printf("ret : %d",ret);
     return ret;
 }
 

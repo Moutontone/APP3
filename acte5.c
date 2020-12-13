@@ -3,7 +3,8 @@
 #include <string.h>
 #include <stdbool.h>
 
-#include "arbres.h"
-#include "arbresphylo.h"
-#include "common_tests.h"
 
+
+ligne_t caracteristiques;
+ligne_t especes[]; //en fonction de nb_especes
+void lire_fichier(FILE * f, &caracteristiques, &especes);

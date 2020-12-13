@@ -2,8 +2,13 @@ BRAY Amandine & GRENIER Armand
 
 table de correspondence :
 1 ligne par espece au format:
+1er ligne = ordre des correspondences
 
-espece_1;O;O;X;X;O
+[nb_espece]
+car_1;car_2;car_3;car_4:car_5;car_6
+espece_1;1;1;0;0;1
+espece_2;0;0;0;1;1
+...
 
 (doit avoir X ou O pour chaque caractéristiques de l'arbre final)
 et on traduit par :

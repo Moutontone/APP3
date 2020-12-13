@@ -7,8 +7,6 @@
 #include "arbresphylo.h"
 #include "common_tests.h"
 
-typedef struct espece_caracs {char* espece; int nb_caracs; char** caracs;} espece_caracs_t;
-
 int main(int argc, char** argv) {
 	if (argc != 2) {
 		printf("Usage : acte1 <nom fichier test>\n");
